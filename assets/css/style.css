@@ -12,3 +12,68 @@ body {
     font-size: 1.6rem;
 }
 
+#principalTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#container-letter {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+#container-letter > h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+#sous-container1 {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+
+}
+
+#sous-container1 + div {
+    width: 45%;
+    height: 48rem;
+}
+
+
+label {
+    display: flex;
+    justify-content: center;
+    margin-top: 20rem;
+    width: 100%;
+}
+
+#inputLetter {
+    display: flex;
+    justify-content: start;
+}
+
+button {
+    width: 10%;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    background: white;
+    border: 1px solid black;
+    width: 10%;
+    margin-top: 20rem;
+}
+
