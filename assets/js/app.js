@@ -1,13 +1,52 @@
 const word = [
+    "teeeest",
+    /*
+    "revoir",
+    "hello",
+    "world",
+    "anime",
+    "bonsoir",
     "test",
-
+    "pendu",
+    "simple",
+    "comme",
+    "eren",
+    "livai",
+    "erwin",
+    "titan",
+    "colossal",
+    "bestial",
+    "inspiration",
+*/
 ];
 
 let looseCount = 2;
+let winCount = 2;
+let id = 0;
 let wordRandom;
+let random = Math.floor(Math.random() * word.length);
 const pendu = document.getElementById("pendu");
+const container = document.getElementById("sous-container1");
+let letterUser;
+const inputUser = document.getElementById("inputLetter");
+const sendLetterButton = document.getElementById("sendLetter");
+
+
+let createDiv = document.createElement("div");
+
+let restartButton = document.createElement("button");
+restartButton.innerHTML = "Re-start";
+container.append(restartButton);
+
+restartButton.addEventListener("click", function () {
+    looseCount = 1;
+    pendu.src = "/assets/img/" + looseCount + ".png";
+    randomWord();
+});
+
+
 function randomWord() {
-    const random = Math.floor(Math.random() * word.length);
+    random = Math.floor(Math.random() * word.length);
     wordRandom = word[random];
     console.log(wordRandom);
     return wordRandom
@@ -15,24 +54,22 @@ function randomWord() {
 
 randomWord();
 
-function createDivForEachLetter () {
+function createDivForEachLetter() {
     for (let i = 0; i < wordRandom.length; i++) {
-        const createDiv = document.createElement("div");
+        createDiv = document.createElement("div");
         createDiv.classList.add("letter");
         createDiv.innerHTML = "?";
-        document.getElementById("sous-container1").appendChild(createDiv);
+        createDiv.id = `${id++}`;
+        container.appendChild(createDiv);
     }
+    document.getElementById("0").innerHTML = wordRandom[0];
+    document.getElementById((wordRandom.length - 1).toString()).innerHTML = wordRandom[wordRandom.length - 1];
 }
 
 createDivForEachLetter();
 
-let letterUser = null;
-const inputUser = document.getElementById("inputLetter");
-const sendLetterButton = document.getElementById("sendLetter");
-
 
 sendLetterButton.addEventListener("click", function () {
-
     letterUser = inputUser.value;
     inputUser.value = null;
     checkLetter();
@@ -40,26 +77,39 @@ sendLetterButton.addEventListener("click", function () {
 
 function checkLetter() {
     if (wordRandom.includes(letterUser)) {
-        console.log("C'est la bonne lettre");
+        printLetter();
+        if (winCount === wordRandom.length) {
+            document.getElementById("win").innerHTML = "T'as épargne Kenny bien joué enfoiré";
+            restartGame();
+        }
     }
     else {
         pendu.src = "/assets/img/" + looseCount++ + ".png";
-
-    }
-
-    if (looseCount === 8) {
-        console.log("ta tué kenny enfoiré");
-        sendLetterButton.innerHTML = "re-start";
-        restartGame();
+        if (looseCount === 9) {
+            console.log("ta tué kenny enfoiré");
+            restartGame();
+        }
     }
 }
 
 function restartGame() {
-    const restartButton = document.createElement("button");
-    restartButton.innerHTML = "Re-start";
+    looseCount = 1;
+    winCount = 2;
+    pendu.src = "/assets/img/" + looseCount++ + ".png";
+
+    randomWord();
 
 }
 
+
+function printLetter() {
+    for (let i = 1; i < wordRandom.length - 1; i++) {
+        if (letterUser === wordRandom[i]) {
+            winCount++;
+            document.getElementById(i.toString()).innerHTML = letterUser;
+        }
+    }
+}
 
 
 
