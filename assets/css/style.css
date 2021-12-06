@@ -79,4 +79,50 @@ input {
     height: 5%;
 }
 
+@media screen and (max-width: 1005px) {
+    #sous-container1 + div {
+        width: 55%;
+        height: 30rem;
+    }
+    button {
+        width: 20%;
+        height: 10%;
+    }
+
+    .letter {
+        width: 10%;
+    }
+}
+
+@media screen and (max-width: 473px){
+
+    .container {
+        width: 100%;
+        display: block;
+        padding: 1rem;
+    }
+
+    #sous-container1 + div {
+        width: 100%;
+    }
+
+    #pendu {
+        width: 250px;
+        height: 250px;
+    }
+
+    button {
+        width: 40%;
+        height: 5%;
+    }
+
+    #container-letter {
+        width: 100%;
+    }
+
+    .letter {
+        width: 7%;
+    }
+}
+
 
