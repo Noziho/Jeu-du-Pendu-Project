@@ -45,7 +45,6 @@ restartButton.addEventListener("click", function () {
 function randomWord() {
     random = Math.floor(Math.random() * word.length);
     wordRandom = word[random];
-    console.log(wordRandom);
     return wordRandom
 }
 
